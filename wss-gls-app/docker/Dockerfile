@@ -29,7 +29,7 @@ RUN install-tool java
 
 # copy folder
 # COPY docker-image/ /
-COPY --from=downloader /home/curl-user/agent-4-gitlab-server-23.6.2.1/wss-gls-app/docker-image/ /
+COPY --from=downloader /home/curl_user/agent-4-gitlab-server-23.6.2.1/wss-gls-app/docker-image/ /
 
 # Expose ports
 # HTTP
