@@ -1,5 +1,9 @@
 # This default may be swapped for any compatible base image
 ARG BASE_IMAGE=amd64/ubuntu:20.04@sha256:b795f8e0caaaacad9859a9a38fe1c78154f8301fdaf0872eaf1520d66d9c0b98
+FROM curlimages/curl:latest AS downloader
+
+RUN curl -O https://integrations.mend.io/release/Agent-for-GitLab-Enterprise/agent-4-gitlab-server.tar.gz
+RUN tar zxf agent-4-gitlab-server.tar.gz
 
 # This buildpack is used for tool installation and user/directory setup
 FROM ghcr.io/containerbase/base:7.8.7 AS buildpack
@@ -24,7 +28,8 @@ ARG JAVA_VERSION=8.0.342+7
 RUN install-tool java
 
 # copy folder
-COPY docker-image/ /
+# COPY docker-image/ /
+COPY --from=downloader /home/curl-user/agent-4-gitlab-server-23.6.2.1/wss-gls-app/docker-image/ /
 
 # Expose ports
 # HTTP
