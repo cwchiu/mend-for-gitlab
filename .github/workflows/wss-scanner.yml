@@ -25,6 +25,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: wss-scanner/docker
+          context: {{defaultContext}}:wss-scanner/docker"
           push: true
           tags: chuiwenchiu/wss-scanner:23.6.2.1

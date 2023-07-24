@@ -25,6 +25,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: wss-gls-app/docker
+          context: "{{defaultContext}}:wss-gls-app/docker"
           push: true
           tags: chuiwenchiu/wss-gls-app:23.6.2.1
