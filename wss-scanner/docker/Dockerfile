@@ -333,7 +333,9 @@ ENV PATH=$PATH:/sast/bin
 
 ### copy folder
 #COPY docker-image/ /
-COPY --from=downloader /home/curl_user/agent-4-gitlab-server-23.6.2.1/wss-scanner/docker-image/ /
+#COPY --from=downloader /home/curl_user/agent-4-gitlab-server-23.6.2.1/wss-scanner/docker-image/ /
+COPY --from=downloader /home/curl_user/agent-4-gitlab-server-23.6.2.1/wss-scanner/docker/docker-image/ /
+
 RUN chmod 755 /start.sh
 RUN chgrp -R 0 ${USER_HOME} && chmod -R g=u ${USER_HOME}
 
